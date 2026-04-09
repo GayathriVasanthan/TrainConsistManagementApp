@@ -1,25 +1,26 @@
 import java.util.*;
 
 class Bogie {
-    private String name;
-    private int capacity;
+    String name;
+    int capacity;
 
     public Bogie(String name, int capacity) {
         this.name = name;
         this.capacity = capacity;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getCapacity() {
-        return capacity;
+    public void display() {
+        System.out.println(name + " -> " + capacity);
     }
 }
 
 public class TrainManagement {
     public static void main(String[] args) {
+
+        System.out.println("===========================================");
+        System.out.println(" UC7 - Sort Bogies by Capacity (Comparator)");
+        System.out.println("===========================================\n");
+
         List<Bogie> bogies = new ArrayList<>();
 
         bogies.add(new Bogie("Sleeper", 72));
@@ -29,14 +30,14 @@ public class TrainManagement {
 
         System.out.println("Before Sorting:");
         for (Bogie b : bogies) {
-            System.out.println(b.getName() + " -> " + b.getCapacity());
+            b.display();
         }
 
-        bogies.sort(Comparator.comparingInt(Bogie::getCapacity));
+        bogies.sort(Comparator.comparingInt(b -> b.capacity));
 
         System.out.println("\nAfter Sorting by Capacity:");
         for (Bogie b : bogies) {
-            System.out.println(b.getName() + " -> " + b.getCapacity());
+            b.display();
         }
 
         System.out.println("\nUC7 sorting completed...");
